@@ -1,4 +1,7 @@
-Copy and paste this script in GreaseMonkey. https://www.greasespot.net/
+Copy and paste this script (https://raw.githubusercontent.com/Sn0w5t0rm/Pris-Verglukar/main/IkeaPriceComparison.js) 
+in GreaseMonkey (Firefox). https://www.greasespot.net/
+or tampermonkey (Chrome).  https://www.tampermonkey.net/
+
 This script shows you the price in another country of your choice of the article you're viewing in dark red.
 
 You can change the country you want to see the price of by changing the language const to the country of your choice.
