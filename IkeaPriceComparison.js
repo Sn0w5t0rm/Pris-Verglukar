@@ -16,6 +16,8 @@ window.addEventListener("load", function () {
     const searchUri = `https://sik.search.blue.cdtapps.com/${language}/search-result-page?&q=${productId}`;
 
     let available = true;
+    let otherPrice = "";
+    let otherSiteUri = "";
 
     fetch(searchUri)
       .then(function (result) {
@@ -23,9 +25,9 @@ window.addEventListener("load", function () {
       })
       .then(function (result) {
         try {
-          const otherPrice =
+          otherPrice =
             " €" + result.searchResultPage.productWindow[0].priceNumeral;
-          const otherSiteUri = result.searchResultPage.productWindow[0].pipUrl;
+          otherSiteUri = result.searchResultPage.productWindow[0].pipUrl;
         } catch {
           available = false;
           otherPrice = " N/A in other country";
