@@ -1,5 +1,5 @@
 // ==UserScript==
-//testing IKEA price country comparison userscript!
+//testing IKEA price country comparison userscript!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // @name     Pris Verglukar
 // @version  1
 // @grant    none
