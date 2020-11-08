@@ -103,6 +103,7 @@ window.addEventListener("load", function () {
           priceSpan[0].lastChild.style.color = "#a00";
 
           if (available) {
+            console.log("Other price found!");
             const divToAppend = document.getElementsByClassName(
               "range-revamp-pip-price-package__price-wrapper"
             )[0];
