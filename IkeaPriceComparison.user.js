@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
     const baseCurrency = "EUR";
 
     // The currency you want that article's price to be shown in (the currency you use)
-    const otherCurrency = "USD";
+    const otherCurrency = "EUR";
 
     let exchangeRate = 1;
     let exchangeRateRequestUri;
