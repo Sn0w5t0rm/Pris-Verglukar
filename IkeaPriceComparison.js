@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name     Ikea Price Thingy
+// @name     Pris Verglukar
 // @version  1
 // @grant    none
 // @author   Storm
