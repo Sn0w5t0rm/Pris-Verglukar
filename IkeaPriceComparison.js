@@ -15,29 +15,37 @@ window.addEventListener("load", function () {
     const priceSpan = document.getElementsByClassName("range-revamp-price");
     const searchUri = `https://sik.search.blue.cdtapps.com/${language}/search-result-page?&q=${productId}`;
 
+    let available = true;
+
     fetch(searchUri)
       .then(function (result) {
         return result.json();
       })
       .then(function (result) {
-        const otherPrice =
-          " €" + result.searchResultPage.productWindow[0].priceNumeral;
-        const otherSiteUri = result.searchResultPage.productWindow[0].pipUrl;
-
+        try {
+          const otherPrice =
+            " €" + result.searchResultPage.productWindow[0].priceNumeral;
+          const otherSiteUri = result.searchResultPage.productWindow[0].pipUrl;
+        } catch {
+          available = false;
+          otherPrice = " N/A in other country";
+        }
         let otherPriceSpan = document.createElement("span");
         let otherPricetextnode = document.createTextNode(otherPrice);
         otherPriceSpan.appendChild(otherPricetextnode);
         priceSpan[0].appendChild(otherPriceSpan);
         priceSpan[0].lastChild.style.color = "#a00";
 
-        const divToAppend = document.getElementsByClassName(
-          "range-revamp-pip-price-package__price-wrapper"
-        )[0];
+        if (available) {
+          const divToAppend = document.getElementsByClassName(
+            "range-revamp-pip-price-package__price-wrapper"
+          )[0];
 
-        let otherSiteButton = document.createElement("button");
-        otherSiteButton.innerHTML = `<a href="${otherSiteUri}">Take me there</a>`;
-        otherSiteButton.firstChild.style.textDecorationStyle;
-        divToAppend.appendChild(otherSiteButton);
+          let otherSiteButton = document.createElement("button");
+          otherSiteButton.innerHTML = `<a href="${otherSiteUri}">Take me there</a>`;
+          otherSiteButton.firstChild.style.textDecorationStyle;
+          divToAppend.appendChild(otherSiteButton);
+        }
       });
   }
   addOtherPrice();
