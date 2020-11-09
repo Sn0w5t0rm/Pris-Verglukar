@@ -9,6 +9,8 @@ For example: nl/en for the dutch site, in English. se/sv for the swedish site, i
 You can easily see the language when you go the site and look at the url, the part after www.ikea.com/ will be the language
 split by a '/' for example www.ikea.com/se/sv/
 
+Currency can be changed once per day to limit API usage
+
 You can also have the prices converted to other currencies by changing these variables:
   - const language = "nl/nl";     // Input the country code of the website you wish to compare to in this format '../..'
   - const baseCurrency = "EUR";   // The base currency used in the country you are comparing to, (the one you put in above ^^ )
