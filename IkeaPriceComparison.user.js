@@ -26,6 +26,8 @@ window.addEventListener("load", function () {
       "range-revamp-product-identifier__number"
     )[0].innerText;
     const priceSpan = document.getElementsByClassName("range-revamp-price");
+    const herePriceFloat = parseFloat(document.getElementsByClassName("range-revamp-price__integer")[0].innerText + document.getElementsByClassName("range-revamp-price__decimals")[0].innerText);
+
     const searchUri = `https://sik.search.blue.cdtapps.com/${language}/search-result-page?&q=${productId}`;
 
     let available = true;
@@ -79,12 +81,12 @@ window.addEventListener("load", function () {
     }
 
     function lookupPrice() {
-      console.log("Looking up price...");
+      console.log("Looking up price...", searchUri);
       fetch(searchUri)
-        .then(function (result) {
+        .then(function(result) {
           return result.json();
         })
-        .then(function (result) {
+        .then(function(result) {
           try {
             otherPrice = ` ${otherCurrency} ${(
               result.searchResultPage.productWindow[0].priceNumeral *
@@ -95,12 +97,18 @@ window.addEventListener("load", function () {
             available = false;
             otherPrice = " N/A in other country";
           }
+          const otherPriceFloat = parseFloat(result.searchResultPage.productWindow[0].priceNumeral);
 
           let otherPriceSpan = document.createElement("span");
           let otherPricetextnode = document.createTextNode(otherPrice);
           otherPriceSpan.appendChild(otherPricetextnode);
           priceSpan[0].appendChild(otherPriceSpan);
-          priceSpan[0].lastChild.style.color = "#a00";
+
+          if (otherPriceFloat > herePriceFloat) {
+            priceSpan[0].lastChild.style.color = "#a00";
+          } else {
+            priceSpan[0].lastChild.style.color = "#0a0";
+          }
 
           if (available) {
             console.log("Other price found!");
