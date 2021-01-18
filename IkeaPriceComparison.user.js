@@ -22,9 +22,7 @@ window.addEventListener("load", function () {
     let exchangeRate = 1;
     let exchangeRateRequestUri;
 
-    const productId = document.getElementsByClassName(
-      "range-revamp-product-identifier__number"
-    )[0].innerText;
+    const productId = document.getElementsByClassName("js-product-pip")[0].dataset.productNo;
     const priceSpan = document.getElementsByClassName("range-revamp-price");
     const searchUri = `https://sik.search.blue.cdtapps.com/${language}/search-result-page?&q=${productId}`;
 
