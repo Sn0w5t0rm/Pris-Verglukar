@@ -85,10 +85,10 @@ window.addEventListener("load", function () {
         .then(function (result) {
           try {
             otherPrice = ` ${otherCurrency} ${(
-              result.searchResultPage.productWindow[0].priceNumeral *
+              result.searchResultPage.products.main.items[0].product.priceNumeral *
               exchangeRate
             ).toFixed(2)}`;
-            otherSiteUri = result.searchResultPage.productWindow[0].pipUrl;
+            otherSiteUri = result.searchResultPage.products.main.items[0].product.pipUrl;
           } catch {
             available = false;
             otherPrice = " N/A in other country";
