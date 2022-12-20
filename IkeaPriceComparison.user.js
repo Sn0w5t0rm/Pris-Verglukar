@@ -23,8 +23,10 @@ window.addEventListener("load", function () {
     let exchangeRateRequestUri;
 
     const productId = document.getElementsByClassName("js-product-pip")[0].dataset.productNo;
-    const priceSpan = document.getElementsByClassName("range-revamp-price");
     const searchUri = `https://sik.search.blue.cdtapps.com/${language}/search-result-page?&q=${productId}`;
+    
+    const priceWrapperClassName = "pip-temp-price-module__price";
+    const priceElementClassName = "pip-temp-price-module__primary-currency-price";
 
     let available = true;
     let otherPrice;
@@ -94,22 +96,34 @@ window.addEventListener("load", function () {
             otherPrice = " N/A in other country";
           }
 
+          // create the element that holds the price found
           let otherPriceSpan = document.createElement("span");
           let otherPricetextnode = document.createTextNode(otherPrice);
           otherPriceSpan.appendChild(otherPricetextnode);
-          priceSpan[0].appendChild(otherPriceSpan);
-          priceSpan[0].lastChild.style.color = "#a00";
+
+          // get the price span
+          const priceElement = document.getElementsByClassName(priceElementClassName);
+
+          if (priceElement && priceElement[0]) {
+            priceElement[0].appendChild(otherPriceSpan);
+            priceElement[0].lastChild.style.color = "#a00";
+          }
 
           if (available) {
             console.log("Other price found!");
-            const divToAppend = document.getElementsByClassName(
-              "range-revamp-pip-price-package__price-wrapper"
-            )[0];
+            console.log(otherPrice);
 
+            // create a button that brings you to the IKEA page of the selected country's article
             let otherSiteButton = document.createElement("button");
             otherSiteButton.innerHTML = `<a href="${otherSiteUri}">Take me there</a>`;
             otherSiteButton.firstChild.style.textDecorationStyle;
-            divToAppend.appendChild(otherSiteButton);
+            
+            // get the price wrapper
+            const divToAppend = document.getElementsByClassName(priceWrapperClassName)[0];
+            if (divToAppend) {
+              divToAppend.appendChild(otherSiteButton);
+            }
+            console.log('URL : ' + otherSiteUri);
           }
         });
     }
