@@ -85,7 +85,7 @@ window.addEventListener("load", function () {
         .then(function (result) {
           try {
             otherPrice = ` ${otherCurrency} ${(
-              result.searchResultPage.products.main.items[0].product.priceNumeral *
+              result.searchResultPage.products.main.items[0].product.salesPrice.numeral *
               exchangeRate
             ).toFixed(2)}`;
             otherSiteUri = result.searchResultPage.products.main.items[0].product.pipUrl;
